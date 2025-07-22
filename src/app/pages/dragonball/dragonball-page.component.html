@@ -1,0 +1,52 @@
+<section class="p-5">
+    <h1>Dargonball</h1>
+    <hr>
+
+    <div class="row">
+        <div class="col-12 col-sm-6 mb-5">
+
+            <div class="pb-3">
+                <h4>Agregar:</h4>
+            </div>
+
+            <div class="form-group mb-3">
+                <input type="text" name="nombre" id="nombre" 
+                class="form-control" 
+                placeholder="Nombre"
+                [value]="name()"
+                #txtName
+                (change)="changeSingalName(txtName.value)">
+            </div>
+
+            <div class="form-group">
+                <input type="number" name="poder" id="poder" 
+                class="form-control" 
+                placeholder="Poder"
+                [value]="power()"
+                #txtPower
+                (change)="changeSingalPower(txtPower.value)">
+            </div>
+
+            <button type="button" class="btn btn-primary mt-3"
+                (click)="addCharacter()">
+                Agregar
+            </button>
+        </div>
+        <div class="col-12 col-sm-3 mb-5">
+            <ul>
+                <li>Personajes</li>
+                @for (character of characters(); track character.id) {
+                <li>
+                    <span>{{ character.name }}</span>
+                    <strong 
+                        [class.text-danger]="character.power > 9000"
+                        [class.text-primary]="character.power < 9000">
+                        ({{ character.power }})
+                    </strong>
+
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
+</section>
