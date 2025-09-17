@@ -6,10 +6,11 @@ const loadFromLocalStorage = (): Character[] => {
   return characters ? JSON.parse(characters) : [];
 };
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: 'root' })// servicio a nivel global root
 export class DragonballService {
   characters = signal<Character[]>(loadFromLocalStorage());
 
+  //effect similar al ngOnInit
   saveToLocalStorage = effect(() => {
     localStorage.setItem('characters', JSON.stringify(this.characters()));
   });
@@ -18,3 +19,6 @@ export class DragonballService {
     this.characters.update((list) => [...list, character]);
   }
 }
+
+//Ijection de dependencias DI
+//Trabaja como un singleton

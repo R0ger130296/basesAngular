@@ -9,5 +9,13 @@ import { DragonballService } from '../../services/dragonball.service';
   imports: [CharacterListComponent, CharacterAddComponent],
 })
 export class DragonballSuperPageComponent {
+  //patron de dise;o DI
+
+  //Tradicional
+  // constructor(
+  //   public dragonballService: DragonballService;
+  // ) {}
+
+  //nueva forma DI
   public dragonballService = inject(DragonballService);
 }
